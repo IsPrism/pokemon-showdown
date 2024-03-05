@@ -6054,4 +6054,9 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		isNonstandard: "Custom",
 		tier: "Illegal",
 	},
+	panzerelite: {
+		tier: "OU",
+		doublesTier: "DOU",
+		natDexTier: "UU",
+	},
 };
