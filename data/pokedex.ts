@@ -19731,7 +19731,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		gen: 5,
 	},
 	panzerelite: {
-		num: 878,
+		num: 900,
 		name: "The Panzer Elite",
 		types: ["Steel", "Fighting"],
 		baseStats: {hp: 80, atk: 100, def: 97, spa: 123, spd: 64, spe: 76},
