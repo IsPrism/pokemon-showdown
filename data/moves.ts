@@ -22058,13 +22058,13 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 	
 	riptide: {
-		num: 1000,
+		num: 1e3,
 		accuracy: 100,
 		basePower: 50,
 		category: "Special",
 		name: "Riptide",
 		pp: 15,
-		priority: 1,
+		priority: 0,
 		flags: {protect: 1, mirror: 1, metronome: 1},
 		secondary:  {
 			chance: 100,
