@@ -22056,4 +22056,29 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Electric",
 		contestType: "Cool",
 	},
+	
+	riptide: {
+		num: 730,
+		accuracy: 100,
+		basePower: 50,
+		category: "Special",
+		name: "Riptide",
+		pp: 15,
+		priority: 1,
+		flags: {protect: 1, mirror: 1, heal: 1, metronome: 1},
+		secondary:  {
+			chance: 100,
+			volatileStatus: 'confusion',
+		},
+		onTry(source, target) {
+			const action = this.queue.willMove(target);
+			const move = action?.choice === 'move' ? action.move : null;
+			if (!move || (move.category === 'Status' && move.id !== 'mefirst') || target.volatiles['mustrecharge']) {
+				return false;
+			}
+		},
+		target: "normal",
+		type: "Water",
+		contestType: "Clever",
+	},
 };
