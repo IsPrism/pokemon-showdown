@@ -19730,4 +19730,16 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		eggGroups: ["Undiscovered"],
 		gen: 5,
 	},
+	eenis: {
+		num: 80,
+		name: "The Eenis",
+		types: ["Electric", "Psychic"],
+		baseStats: {hp: 95, atk: 75, def: 110, spa: 100, spd: 80, spe: 30},
+		abilities: {0: "Oblivious", 1: "Own Tempo", H: "Regenerator"},
+		heightm: 1.6,
+		weightkg: 78.5,
+		color: "Pink",
+		evoLevel: 37,
+		eggGroups: ["Monster", "Water 1"],
+	},
 };
