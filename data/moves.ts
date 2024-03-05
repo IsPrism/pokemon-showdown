@@ -22060,7 +22060,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 	riptide: {
 		num: 800,
 		accuracy: 100,
-		basePower: 50,
+		basePower: 70,
 		category: "Special",
 		name: "Riptide",
 		pp: 15,
