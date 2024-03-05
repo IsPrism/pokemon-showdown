@@ -22065,7 +22065,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		name: "Riptide",
 		pp: 15,
 		priority: 1,
-		flags: {protect: 1, mirror: 1, heal: 1, metronome: 1},
+		flags: {protect: 1, mirror: 1, metronome: 1},
 		secondary:  {
 			chance: 100,
 			volatileStatus: 'confusion',
