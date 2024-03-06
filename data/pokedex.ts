@@ -19730,16 +19730,4 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		eggGroups: ["Undiscovered"],
 		gen: 5,
 	},
-	panzerelite: {
-		num: 999,
-		name: "The Panzer Elite",
-		types: ["Steel", "Fighting"],
-		baseStats: {hp: 80, atk: 100, def: 97, spa: 123, spd: 64, spe: 76},
-		abilities: {0: "Mega Launcher", H: "Heavy Metal"},
-		heightm: 1.7,
-		weightkg: 5000,
-		color: "White",
-		eggGroups: ["Mineral"],
-	},
-	
 };

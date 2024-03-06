@@ -7627,4 +7627,22 @@ export const Items: {[itemid: string]: ItemData} = {
 		gen: 8,
 		isNonstandard: "CAP",
 	},
+	quorklaberry: {
+		name: "Quorkla Berry",
+		spritenum: 158,
+		isBerry: true,
+		naturalGift: {
+			basePower: 80,
+			type: "Ice",
+		},
+		onUpdate(pokemon) {
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 &&
+					pokemon.hasAbility('gluttony') && pokemon.abilityState.gluttony)) {
+				pokemon.eatItem();
+			}
+		},
+		onEat(pokemon) {this.boost({atk: 2});this.boost({def: -1})},
+		num: 152,
+		gen: 3,
+	},
 };
