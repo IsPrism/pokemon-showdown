@@ -22095,7 +22095,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			// this is a side condition
 			onSideStart(side) {
-				this.add('-sidestart', side, 'move: Splinter Axe');
+				this.add('-sidestart', side, 'move: Splinter Shot');
 			},
 			onEntryHazard(pokemon) {
 				if (pokemon.hasItem('heavydutyboots')) return;
