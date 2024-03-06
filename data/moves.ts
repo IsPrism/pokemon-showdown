@@ -22082,12 +22082,12 @@ export const Moves: {[moveid: string]: MoveData} = {
 		contestType: "Clever",
 	},
 
-	splinteraxe: {
+	splintershot: {
 		num: 446,
-		accuracy: true,
-		basePower: 0,
+		accuracy: 100,
+		basePower: 60,
 		category: "Physical",
-		name: "Splinter Axe",
+		name: "Splinter Shot",
 		pp: 20,
 		priority: 0,
 		flags: {reflectable: 1, metronome: 1, mustpressure: 1},
