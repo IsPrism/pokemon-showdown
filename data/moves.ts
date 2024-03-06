@@ -22091,6 +22091,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		pp: 20,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, metronome: 1},
+		sideCondition: 'splinters',
 		self: {
 			onHit(source) {
 				for (const side of source.side.foeSidesWithConditions()) {
@@ -22104,10 +22105,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 			},
 			onEntryHazard(pokemon) {
 				if (pokemon.hasItem('heavydutyboots')) return;
-				// Ice Face and Disguise correctly get typed damage from Stealth Rock
-				// because Stealth Rock bypasses Substitute.
-				// They don't get typed damage from Steelsurge because Steelsurge doesn't,
-				// so we're going to test the damage of a Steel-type Stealth Rock instead.
 				const groundHazard = this.dex.getActiveMove('Stealth Rock');
 				groundHazard.type = 'Ground';
 				const typeMod = this.clampIntRange(pokemon.runEffectiveness(groundHazard), -6, 6);
