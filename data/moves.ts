@@ -22083,22 +22083,31 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 
 	splintershot: {
-		num: 446,
+		num: 1001,
 		accuracy: 100,
 		basePower: 60,
 		category: "Physical",
 		name: "Splinter Shot",
 		pp: 20,
 		priority: 0,
-		flags: {reflectable: 1, metronome: 1, mustpressure: 1},
-		sideCondition: 'splinters',
+		flags: {protect: 1, mirror: 1, metronome: 1},
+		self: {
+			onHit(source) {
+				for (const side of source.side.foeSidesWithConditions()) {
+					side.addSideCondition('splinters');
+				}
+			},
+		},
 		condition: {
-			// this is a side condition
 			onSideStart(side) {
 				this.add('-sidestart', side, 'move: Splinter Shot');
 			},
 			onEntryHazard(pokemon) {
 				if (pokemon.hasItem('heavydutyboots')) return;
+				// Ice Face and Disguise correctly get typed damage from Stealth Rock
+				// because Stealth Rock bypasses Substitute.
+				// They don't get typed damage from Steelsurge because Steelsurge doesn't,
+				// so we're going to test the damage of a Steel-type Stealth Rock instead.
 				const groundHazard = this.dex.getActiveMove('Stealth Rock');
 				groundHazard.type = 'Ground';
 				const typeMod = this.clampIntRange(pokemon.runEffectiveness(groundHazard), -6, 6);
@@ -22106,9 +22115,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 			},
 		},
 		secondary: null,
-		target: "foeSide",
+		target: "adjacentFoe",
 		type: "Ground",
-		zMove: {boost: {atk: 1}},
 		contestType: "Cool",
 	},
 };
