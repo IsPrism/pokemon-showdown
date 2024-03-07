@@ -7548,10 +7548,4 @@ export const MovesText: {[k: string]: MoveText} = {
 		desc: "Fails if the target did not select a physical attack, special attack, or Me First for use this turn, or if the target moves before the user.",
 		shortDesc: "Usually goes first. Fails if target is not attacking."
 	},
-
-	splintershot: {
-		name: "Splinter Shot",
-		desc: "If this move is successful, it sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Steel type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively.",
-		shortDesc: "Foe: Sets Ground hazard."
-	},
 };

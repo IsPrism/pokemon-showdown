@@ -22082,40 +22082,19 @@ export const Moves: {[moveid: string]: MoveData} = {
 		contestType: "Clever",
 	},
 
-	splintershot: {
-		num: 830,
-		accuracy: 100,
-		basePower: 60,
+	magicalwound: {
+		num: 328,
+		accuracy: 85,
+		basePower: 35,
 		category: "Physical",
-		name: "Splinter Shot",
+		name: "Magical Wound",
 		pp: 15,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, metronome: 1},
-		self: {
-			onHit(source) {
-				for (const side of source.side.foeSidesWithConditions()) {
-					side.addSideCondition('stealthrock');
-				}
-			},
-		},
-		condition: {
-			onSideStart(side) {
-				this.add('-sidestart', side, 'move: G-Max Steelsurge');
-			},
-			onEntryHazard(pokemon) {
-				if (pokemon.hasItem('heavydutyboots')) return;
-				// Ice Face and Disguise correctly get typed damage from Stealth Rock
-				// because Stealth Rock bypasses Substitute.
-				// They don't get typed damage from Steelsurge because Steelsurge doesn't,
-				// so we're going to test the damage of a Steel-type Stealth Rock instead.
-				const groundHazard = this.dex.getActiveMove('Stealth Rock');
-				groundHazard.type = 'Ground';
-				const typeMod = this.clampIntRange(pokemon.runEffectiveness(groundHazard), -6, 6);
-				this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
-			},
-		},
-		secondary: {}, // Sheer Force-boosted
+		flags: {protect: 1, mirror: 1, metronome: 1},
+		volatileStatus: 'partiallytrapped',
+		secondary: null,
 		target: "normal",
-		type: "Ground",
+		type: "Fairy",
+		contestType: "Clever",
 	},
 };
