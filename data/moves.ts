@@ -22084,8 +22084,8 @@ export const Moves: {[moveid: string]: MoveData} = {
 
 	splintershot: {
 		num: 830,
-		accuracy: 90,
-		basePower: 65,
+		accuracy: 100,
+		basePower: 60,
 		category: "Physical",
 		name: "Splinter Shot",
 		pp: 15,
@@ -22094,13 +22094,13 @@ export const Moves: {[moveid: string]: MoveData} = {
 		self: {
 			onHit(source) {
 				for (const side of source.side.foeSidesWithConditions()) {
-					side.addSideCondition('gmaxsteelsurge');
+					side.addSideCondition('stealthrock');
 				}
 			},
 		},
 		condition: {
 			onSideStart(side) {
-				this.add('-sidestart', side, 'move: G-Max Steelsurge');
+				this.add('-sidestart', side, 'move: Stealth Rock');
 			},
 			onEntryHazard(pokemon) {
 				if (pokemon.hasItem('heavydutyboots')) return;
@@ -22108,9 +22108,9 @@ export const Moves: {[moveid: string]: MoveData} = {
 				// because Stealth Rock bypasses Substitute.
 				// They don't get typed damage from Steelsurge because Steelsurge doesn't,
 				// so we're going to test the damage of a Steel-type Stealth Rock instead.
-				const steelHazard = this.dex.getActiveMove('Stealth Rock');
-				steelHazard.type = 'Steel';
-				const typeMod = this.clampIntRange(pokemon.runEffectiveness(steelHazard), -6, 6);
+				const groundHazard = this.dex.getActiveMove('Stealth Rock');
+				groundHazard.type = 'Ground';
+				const typeMod = this.clampIntRange(pokemon.runEffectiveness(groundHazard), -6, 6);
 				this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
 			},
 		},
