@@ -22083,37 +22083,39 @@ export const Moves: {[moveid: string]: MoveData} = {
 	},
 
 	splintershot: {
-		num: 1001,
-		accuracy: 100,
-		basePower: 60,
+		num: 830,
+		accuracy: 90,
+		basePower: 65,
 		category: "Physical",
 		name: "Splinter Shot",
-		pp: 20,
+		pp: 15,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, metronome: 1},
-		sideCondition: 'splinters',
+		flags: {contact: 1, protect: 1, mirror: 1, metronome: 1},
 		self: {
 			onHit(source) {
 				for (const side of source.side.foeSidesWithConditions()) {
-					side.addSideCondition('splinters');
+					side.addSideCondition('gmaxsteelsurge');
 				}
 			},
 		},
 		condition: {
 			onSideStart(side) {
-				this.add('-sidestart', side, 'move: Splinter Shot');
+				this.add('-sidestart', side, 'move: G-Max Steelsurge');
 			},
 			onEntryHazard(pokemon) {
 				if (pokemon.hasItem('heavydutyboots')) return;
-				const groundHazard = this.dex.getActiveMove('Stealth Rock');
-				groundHazard.type = 'Ground';
-				const typeMod = this.clampIntRange(pokemon.runEffectiveness(groundHazard), -6, 6);
+				// Ice Face and Disguise correctly get typed damage from Stealth Rock
+				// because Stealth Rock bypasses Substitute.
+				// They don't get typed damage from Steelsurge because Steelsurge doesn't,
+				// so we're going to test the damage of a Steel-type Stealth Rock instead.
+				const steelHazard = this.dex.getActiveMove('Stealth Rock');
+				steelHazard.type = 'Steel';
+				const typeMod = this.clampIntRange(pokemon.runEffectiveness(steelHazard), -6, 6);
 				this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
 			},
 		},
-		secondary: null,
-		target: "adjacentFoe",
+		secondary: {}, // Sheer Force-boosted
+		target: "normal",
 		type: "Ground",
-		contestType: "Cool",
 	},
 };
