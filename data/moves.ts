@@ -22100,7 +22100,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		},
 		condition: {
 			onSideStart(side) {
-				this.add('-sidestart', side, 'move: Stealth Rock');
+				this.add('-sidestart', side, 'move: G-Max Steelsurge');
 			},
 			onEntryHazard(pokemon) {
 				if (pokemon.hasItem('heavydutyboots')) return;
